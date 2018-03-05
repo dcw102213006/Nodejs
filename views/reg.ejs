@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <head>
+        <title><%= title %>-Microblog</title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+        <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
+        <link rel='stylesheet' href='/stylesheets/bootstrap-responsive.css' />
+        <style>
+            body{
+                padding-top:60px;
+                padding-bottom:40px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/">Microblog</a>
+                    <div class="nav-collapse">
+                        <ul class="nav">
+                            <li ><a href="/">首頁</a></li>
+                            
+                        </ul>
+                        <ul class="nav navbar-right">
+                        
+                            <%if(!user){%>    
+                                <li><a href="/login">登入</a></li>
+                                <li><a href="/reg">註冊</a></li>
+                            <%}%>
+                            
+                            <%if(user){%>  
+                                <li><a><%=user.name%>您好!!</a></li>
+                                
+                                
+                                <li><a href="/logout">登出</a></li>
+                            <%}%>
+                        
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form class="form-horizontal" method="post">
+            <fieldset>
+                <%  if(locals.error){ %>
+                    <div class="alert alert-error"><%=locals.error%></div>
+                
+                <%}%> 
+                
+                <%  if(locals.success){ %>
+                    <div class="alert alert-success"><%=locals.success%></div>
+                
+                <%}%> 
+                
+                
+                <legend>使用者註冊</legend>
+                <div  class="control-group">
+                    <label class="control-label" for="name">姓名</label>
+                    <div class="controls">
+                        <input type="text" class="input-xlarge" id="name" name="name" required>
+                        
+                    </div>
+                </div>
+                <div  class="control-group">
+                    <label class="control-label" for="username">使用者帳號</label>
+                    <div class="controls">
+                        <input type="text" class="input-xlarge" id="username" name="username" required >
+                        
+                    </div>
+                </div>
+                <div  class="control-group">
+                    <label class="control-label" for="password">密碼</label>
+                    <div class="controls">
+                        <input type="password" class="input-xlarge" id="password" name="password" required>
+                        
+                    </div>
+                </div>
+                <div  class="control-group">
+                    <label class="control-label" for="password-repeat" >重複輸入密碼</label>
+                    <div class="controls">
+                        <input type="password" class="input-xlarge" id="password-repeat" name="password-repeat" required>
+                        
+                    </div>
+                    
+                    
+                </div>
+                <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">註冊</button>
+                </div>
+            </fieldset>
+        <form>
+    </body>
+    <script src="/javascripts/jquery.js"></script>
+    <script src="/javascripts/bootstrap.js"></script>
+</html>
+
